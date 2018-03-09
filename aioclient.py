@@ -9,7 +9,10 @@ async def request(method, *args, **kargs):
             mimetype = response.content_type
             if mimetype.endswith('json'):
                 return response.status, response.headers, await response.json()
-            elif mimetype.startswith('text') or mimetype.endswith('javascript') or mimetype.endswith('svg') or mimetype.endswith('xml'):
+            elif mimetype.endswith('xml'):
+                with io.StringIO(await response.text()) as stream:
+                    return response.status, response.headers, ElementTree.parse(stream)
+            elif mimetype.startswith('text') or mimetype.endswith('javascript') or mimetype.endswith('svg'):
                 return response.status, response.headers, await response.text()
             else:
                 return response.status, response.headers, await response.read()
