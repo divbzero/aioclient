@@ -11,6 +11,9 @@ async def request(method, *args, **kargs):
                 return response.status, response.headers, await response.json()
             elif mimetype.endswith('xml'):
                 with io.StringIO(await response.text()) as stream:
+                    for event, node in ElementTree.iterparse(stream, events=['start-ns']):
+                        ElementTree.register_namespace(*node)
+                with io.StringIO(await response.text()) as stream:
                     return response.status, response.headers, ElementTree.parse(stream)
             elif mimetype.startswith('text') or mimetype.endswith('javascript') or mimetype.endswith('svg'):
                 return response.status, response.headers, await response.text()
