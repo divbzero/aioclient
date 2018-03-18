@@ -7,7 +7,7 @@ Installation
 ---
 
 ```sh
-pip install aioserver
+pip install aioclient
 ```
 
 Usage
@@ -27,4 +27,10 @@ Changelog
 ### v0.1.0
 
 * GET requests return `status, headers, body` tuples
+
+
+### v0.2.0
+
+* Support OPTIONS, HEAD, POST, PUT, PATCH, and DELETE requests
+* Deserialize text/xml responses as XML ElementTree
 
