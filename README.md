@@ -32,3 +32,6 @@ Changelog
 * Support OPTIONS, HEAD, POST, PUT, PATCH, and DELETE requests
 * Deserialize text/xml responses as XML ElementTree
 
+### v0.2.1
+
+* Fix project description
