@@ -29,9 +29,13 @@ Changelog
 
 ### v0.2.0
 
-* Support OPTIONS, HEAD, POST, PUT, PATCH, and DELETE requests
-* Deserialize text/xml responses as XML ElementTree
+* Support `OPTIONS`, `HEAD`, `POST`, `PUT`, `PATCH`, and `DELETE` requests
+* Deserialize `text/xml` responses as XML `ElementTree`
 
 ### v0.2.1
 
 * Fix project description
+
+### v0.2.2
+
+* Remove `cchardet` dependency
