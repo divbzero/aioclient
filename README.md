@@ -5,7 +5,7 @@ Installation
 ---
 
 ```sh
-pip install aioclient
+python3 -m pip install aioclient
 ```
 
 Usage
@@ -13,10 +13,13 @@ Usage
 
 ```python
 import aioclient
+import asyncio
 
 async def get_example():
     status, headers, body = await aioclient.get('https://www.example.com/')
     print(body)
+
+asyncio.run(get_example())
 ```
 
 Changelog
