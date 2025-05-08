@@ -7,5 +7,14 @@ install: .venv/bin/activate
 test: install
 	. .venv/bin/activate; sed -n '/^```python/,/^```/ p' < README.md | sed '/^```/d' | python
 
+.PHONY: build
+build: test
+	. .venv/bin/activate; python3 -m pip install --upgrade build
+	. .venv/bin/activate; python3 -m build
+
+.PHONY: clean
+clean:
+	rm -rf __pycache__ aioclient.egg-info dist
+
 .venv/bin/activate:
 	python3 -m venv .venv
