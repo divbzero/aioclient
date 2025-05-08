@@ -12,6 +12,11 @@ build: test
 	. .venv/bin/activate; python3 -m pip install --upgrade build
 	. .venv/bin/activate; python3 -m build
 
+.PHONY: publish
+publish: build
+	. .venv/bin/activate; python3 -m pip install --upgrade twine
+	. .venv/bin/activate; python3 -m twine upload dist/*
+
 .PHONY: clean
 clean:
 	rm -rf __pycache__ aioclient.egg-info dist
